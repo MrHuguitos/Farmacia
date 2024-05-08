@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Produto</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/addprodutos.css') }}">
+</head>
+<body>
+    <form action="/inserir" method="post" enctype="multipart/form-data">
+        <h2>Adicionar Produto</h2>
+
+        <label>Código:</label>
+        <div class="input">
+            <input type="text" name="codigo" id="codigo" placeholder="Ex.: 1234567890123" required>
+        </div>
+        <label>Nome:</label>
+        <div class="input">
+            <input type="text" name="nome" id="nome" placeholder="Ex.: Paracetamol" required>
+        </div>
+        <label>Quantidade:</label>
+        <div class="input">
+            <input type="number" name="quant" id="quant" placeholder="Ex.: 300" required>
+        </div>
+        <label>Valor(R$):</label>
+        <div class="input">
+            <input type="text" name="valor" id="valor" placeholder="Ex.: 9.99" required>
+        </div>
+        <label>Categoria:</label>
+        <div class="select">
+            <select name="categoria" id="categoria" required>
+                <option>Medicamentos</option>
+                <option>Vitaminas e Suplementos</option>
+                <option>Higiene Pessoal</option>
+                <option>Cosméticos</option>
+                <option>Infantil</option>
+                <option>Terceira Idade</option>
+                <option>Primeiros Socorros</option>
+                <option>Equipamentos de Saúde</option>
+            </select>
+        </div>
+        <label>Imagem(jpg):</label>
+        <div class="file">
+            <input type="file" name="imagem" id="imagem" accept=".jpg" required>
+        </div>
+        <div id="btn">
+            <button type="submit">Concluir</button>
+        </div>
+    </form>
+</body>
+</html>

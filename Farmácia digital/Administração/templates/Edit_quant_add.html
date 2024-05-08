@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aumentar estoque</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/addprodutos.css') }}">
+</head>
+<body>
+    <form action="/editor/quantidade/adicionar" method="post">
+        <h2>Aumentar Estoque</h2>
+
+        <label>Código:</label>
+        <div class="input">
+            <input type="text" name="codigo" id="codigo" placeholder="Ex.: 1234567890123" required>
+        </div>
+        <label>Quantidade a ser adicionada:</label>
+        <div class="input">
+            <input type="number" name="quant" id="quant" placeholder="Ex.: 300" required>
+        </div>
+        <div id="btn">
+            <button type="submit">Concluir</button>
+        </div>
+    </form>
+</body>
+</html>
