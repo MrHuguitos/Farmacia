@@ -25,7 +25,7 @@
         </div>
         <label>Valor(R$):</label>
         <div class="input">
-            <input type="text" name="valor" id="valor" placeholder="Ex.: 9.99" required>
+            <input type="text" name="valor" id="valor" placeholder="0,00" oninput="formatCurrency(this)" required>
         </div>
         <label>Categoria:</label>
         <div class="select">
@@ -48,5 +48,15 @@
             <button type="submit">Concluir</button>
         </div>
     </form>
+    <script>
+        function formatCurrency(input) {
+          // Remover todos os caracteres, exceto números e ponto decimal
+          var value = input.value.replace(/\D/g, '');
+          // Converter para float com 2 casas decimais
+          value = (parseFloat(value) / 100).toFixed(2);
+          // Formatar para o formato monetário brasileiro (R$ 0,00)
+          input.value = value.replace('.', ',');
+        }
+    </script>
 </body>
 </html>

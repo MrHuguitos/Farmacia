@@ -10,19 +10,21 @@
 <body>
     <h2>Promoções</h2>
     <div class="options">
-        <a href="{{ url_for('deletar') }}" title="Home">
+        <a href="{{ url_for('promocoes_add') }}" title="Home">
             <div class="option">
-                <p>Adicionar</p>
+                <p>Criar Promoção</p>
             </div>
         </a>
-        <a href="{{ url_for('inserir') }}" title="Home">
+        <a href="{{ url_for('editor_valor') }}" title="Home">
             <div class="option">
-                <p>Editar</p>
+                <p>Editar Promoção</p>
             </div>
         </a>
-        <div class="option">
-            <p>Encerrar</p>
-        </div>
+        <a href="{{ url_for('editor_nome') }}" title="Home">
+            <div class="option">
+                <p>Encerrar Promoção</p>
+            </div>
+        </a>
     </div>
 </body>
 </html>

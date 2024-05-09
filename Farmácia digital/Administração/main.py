@@ -25,6 +25,7 @@ def inserir():
         categoria = request.form['categoria']
         foto = request.files['imagem']
 
+        valor2 = valor.replace(',', '.')
         imagem = foto.read() #Converter a imagem em binário
 
         cursor.execute(f"SELECT * FROM produtos WHERE cod = {codigo};")
@@ -33,7 +34,7 @@ def inserir():
         if linha is not None: #Caso o produto já exista
             return render_template("Administração.html", mensagem = "O produto não pode ser cadastrado, pois já existe!")
         else: 
-            cursor.execute(f"INSERT INTO produtos VALUES (%s, %s, %s, %s, %s, %s);", (codigo, nome, quantidade, valor, categoria, imagem))
+            cursor.execute(f"INSERT INTO produtos VALUES (%s, %s, %s, %s, %s, %s);", (codigo, nome, quantidade, valor2, categoria, imagem))
             banco.commit()
             return render_template("Administração.html", mensagem = "Produto Cadastrado com Sucesso!")
     else:
@@ -150,6 +151,29 @@ def editor_nome():
 @app.route('/promocoes') #Página de criação, edição e fechamento de promoções
 def promocoes():
     return render_template("Promocoes.html")
+
+@app.route('/promocoes/adicionar', methods=['GET', 'POST'])
+def promocoes_add():
+    if request.method == 'POST':
+        codigo = request.form['codigo']
+        desconto = request.form['desc']
+
+        desconto2 = "{:.2f}".format((int(desconto) / 100))
+
+        if desconto2 < 1:
+            cursor.execute(f"SELECT quantidade FROM produtos WHERE cod = {codigo};")
+            linha = cursor.fetchone()
+
+            if linha is not None: #Caso o produto exista
+                cursor.execute(f"INSERT INTO produtos VALUES (%s, %s);", (codigo, desconto2))
+                banco.commit()
+                return render_template("Administração.html", mensagem = "Promoção Cadastrada com Sucesso!")        
+            else: 
+                return render_template("Administração.html", mensagem = "O promoção não pode ser criada, pois o produto não existe!")
+        else:
+            return render_template("Administração.html", mensagem = "O promoção não pode ser criada, pois o valor de desconto é inválido")
+    else:
+        return render_template("Promocoes_add.html")
 
 if __name__ == "__main__":
     app.run(debug=True)

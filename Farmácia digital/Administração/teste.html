@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adicionar Valor para PIX</title>
+<style>
+  /* Estilo para o campo de input */
+  .pix-input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    box-sizing: border-box;
+    outline: none;
+  }
+  
+  /* Estilo para o ícone */
+  .pix-icon {
+    margin-right: 10px;
+    color: #666; /* Cor do ícone */
+  }
+</style>
+</head>
+<body>
+
+<h2>Adicionar Valor para PIX</h2>
+
+<form>
+  <div>
+    <span class="pix-icon">💳</span> <!-- Ícone indicativo -->
+    <input type="text" class="pix-input" id="pix-value" placeholder="0,00" oninput="formatCurrency(this)">
+  </div>
+  <br>
+  <button type="submit">Enviar</button>
+</form>
+
+<script>
+  function formatCurrency(input) {
+    // Remover todos os caracteres, exceto números e ponto decimal
+    var value = input.value.replace(/\D/g, '');
+    // Converter para float com 2 casas decimais
+    value = (parseFloat(value) / 100).toFixed(2);
+    // Formatar para o formato monetário brasileiro (R$ 0,00)
+    input.value = value.replace('.', ',');
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar promoção</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/addprodutos.css') }}">
+</head>
+<body>
+    <form action="/promocoes/adicionar" method="post">
+        <h2>Criar Promoção</h2>
+
+        <label>Código:</label>
+        <div class="input">
+            <input type="text" name="codigo" id="codigo" placeholder="Ex.: 1234567890123" required>
+        </div>
+        <label>Porcentagem do Desconto:</label>
+        <div class="input">
+            <input type="text" name="desc" id="desc" placeholder="Ex.: 99,9" required>
+        </div>
+        <div id="btn">
+            <button type="submit">Concluir</button>
+        </div>
+    </form>
+</body>
+</html>
